@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>E-commerce</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="css/all.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <header>
+      <nav class="container">
+        <input
+          type="search"
+          name="search"
+          id="search"
+          placeholder="Search..."
+        />
+
+        <div>
+          <p class="cart hover:cursor-pointer">
+            <i class="fa-solid fa-cart-shopping fa-2xl"></i>
+            <span id="num-product">0</span>
+          </p>
+          <p id="theme-toggle" class="hover:cursor-pointer">
+            <i class="fa-regular fa-moon fa-2xl"></i>
+          </p>
+        </div>
+      </nav>
+    </header>
+    <section class="p-4 text-center container">
+      <p class="text-3xl font-bold">Welcome to E-Comerce</p>
+    </section>
+    <section class="container">
+      <p class="border-b-2 cat text-2xl max-w-fit">All Products</p>
+      <div
+        id="product-box"
+        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-items-center gap-2 w-full p-4"
+      ></div>
+    </section>
+
+    <footer>&copy; All right Saved</footer>
+  </body>
+  <script src="main.js"></script>
+</html>
