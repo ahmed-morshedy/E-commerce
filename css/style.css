@@ -66,6 +66,8 @@ input[type="search"] {
   padding: 10px;
   border-radius: 7px;
   border: 1px solid var(--text-color);
+  color: var(--text-color);
+  background-color: var(--background-color);
   &:focus {
     outline: none;
     border-color: black;
