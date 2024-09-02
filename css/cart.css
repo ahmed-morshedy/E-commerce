@@ -75,10 +75,6 @@ input[type="search"] {
   }
 }
 
-#products {
-  /* margin-bottom: 100px; */
-}
-
 #products .item {
   border: 1px solid var(--text-color);
   border-radius: 4px;
