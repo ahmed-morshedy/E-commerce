@@ -74,6 +74,11 @@ input[type="search"] {
   }
 }
 
+select#categories {
+  margin-top: 5px;
+  border: 2px solid #e1e1e1;
+}
+
 #product-box .item {
   border: 1px solid var(--text-color);
   border-radius: 4px;

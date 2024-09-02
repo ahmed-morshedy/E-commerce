@@ -34,7 +34,18 @@
       <p class="text-3xl font-bold">Welcome to E-Comerce</p>
     </section>
     <section class="container">
-      <p class="border-b-2 cat text-2xl max-w-fit">All Products</p>
+      <div class="flex justify-between">
+        <p class="border-b-2 cat text-2xl max-w-fit">Products</p>
+        <form>
+          <select name="categories" id="categories">
+            <option value="all" selected>All</option>
+            <option value="electronics">Electronics</option>
+            <option value="jewelery">Jewelery</option>
+            <option value="men's clothing">Men's clothing</option>
+            <option value="women's clothing">Women's clothing</option>
+          </select>
+        </form>
+      </div>
       <div
         id="product-box"
         class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-items-center gap-2 w-full p-4"

@@ -30,68 +30,70 @@ themeToggleBtn.addEventListener("click", function () {
 //Fetch Data
 let allData;
 
-async function fetchAllData() {
-  await fetch("https://fakestoreapi.com/products")
-    .then((res) => res.json())
-    .then((json) => (allData = json));
+const productBox = document.getElementById("product-box");
+async function fetchAllData(apiUrl) {
+  try {
+    const response = await fetch(apiUrl);
+    allData = await response.json();
 
-  const productBox = document.getElementById("product-box");
+    allData.map((item) => {
+      const itemElement = document.createElement("div");
+      itemElement.className = "item";
 
-  console.log(allData[0]);
+      // Image Element
+      const imgElement = document.createElement("div");
+      const img = document.createElement("img");
+      img.src = item.image;
+      imgElement.appendChild(img);
+      itemElement.appendChild(imgElement);
 
-  allData.map((item) => {
-    const itemElement = document.createElement("div");
-    itemElement.className = "item";
+      // Info Container
+      const info = document.createElement("div");
+      info.className = "info";
+      info.style =
+        "display: flex;padding: 10px;justify-content: space-between;align-items: center;";
 
-    const imgElement = document.createElement("div");
-    const img = document.createElement("img");
-    img.src = item.image;
-    imgElement.append(img);
-    itemElement.append(imgElement);
+      const div = document.createElement("div");
 
-    const info = document.createElement("div");
-    info.className = "info";
-    info.style =
-      "display: flex;padding: 10px;justify-content: space-between;align-items: center;";
+      // Category Text
+      const pCat = document.createElement("p");
+      pCat.className = "category";
+      const pCatText = document.createTextNode(`Title : ${item.title}`);
+      pCat.appendChild(pCatText);
+      div.appendChild(pCat);
 
-    const div = document.createElement("div");
+      // Price Text
+      const pPrice = document.createElement("p");
+      pPrice.className = "price";
+      const priceText = document.createTextNode(`Price : $${item.price}`);
+      pPrice.appendChild(priceText);
+      div.appendChild(pPrice);
 
-    const pCat = document.createElement("p");
-    pCat.className = "category";
-    const pText = (document.createTextNode = `Title : ${item.title}`);
-    pCat.append(pText);
-    itemElement.append(pCat);
+      info.appendChild(div);
 
-    const pPrice = document.createElement("p");
-    pPrice.className = "price";
-    const priceText = (document.createTextNode = `Price : ${item.price}`);
-    pPrice.append(priceText);
-    div.append(pPrice);
+      // Cart Icon
+      const cartElement = document.createElement("div");
+      cartElement.className = "cart-icon";
+      cartElement.style = "cursor:pointer";
+      const cart = document.createElement("i");
+      cart.className = "fa-solid fa-cart-plus fa-2xl";
+      cart.id = item.id;
 
-    info.append(div);
+      cartElement.appendChild(cart);
 
-    const cartElement = document.createElement("div");
-    cartElement.className = "cart-icon ";
-    cartElement.style = "cursor:pointer";
-    const cart = document.createElement("i");
-    cart.className = "fa-solid fa-cart-plus fa-2xl";
-    cart.id = item.id;
+      info.appendChild(cartElement);
 
-    cartElement.append(cart);
-
-    info.append(cartElement);
-
-    itemElement.append(info);
-    productBox.append(itemElement);
-  });
+      itemElement.appendChild(info);
+      productBox.appendChild(itemElement);
+    });
+  } catch (error) {
+    console.error("Error fetching data:", error);
+  }
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  fetchAllData();
-});
+fetchAllData("https://fakestoreapi.com/products");
 
 function getNumberOfProductsInSession() {
-  // Retrieve the existing products from sessionStorage and parse them into an array
   let existingProducts = sessionStorage.getItem("products");
   existingProducts = existingProducts ? JSON.parse(existingProducts) : [];
 
@@ -127,4 +129,18 @@ document.addEventListener("click", function (event) {
     });
     getNumberOfProductsInSession();
   }
+});
+
+document.getElementById("categories").addEventListener("change", function () {
+  const selectedCategory = this.value;
+
+  const apiUrl =
+    selectedCategory === "all"
+      ? "https://fakestoreapi.com/products"
+      : `https://fakestoreapi.com/products/category/${encodeURIComponent(
+          selectedCategory
+        )}`;
+
+  productBox.innerHTML = "";
+  fetchAllData(apiUrl);
 });
