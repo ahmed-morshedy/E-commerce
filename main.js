@@ -93,6 +93,10 @@ async function fetchAllData(apiUrl) {
 
 fetchAllData("https://fakestoreapi.com/products");
 
+window.onload = function () {
+  getNumberOfProductsInSession();
+};
+
 function getNumberOfProductsInSession() {
   let existingProducts = sessionStorage.getItem("products");
   existingProducts = existingProducts ? JSON.parse(existingProducts) : [];

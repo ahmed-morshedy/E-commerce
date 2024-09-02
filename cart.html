@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cart</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="css/all.min.css" />
+    <link rel="stylesheet" href="css/cart.css" />
+  </head>
+  <body>
+    <header>
+      <nav class="container">
+        <input
+          type="search"
+          name="search"
+          id="search"
+          placeholder="Search..."
+        />
+
+        <div>
+          <a href="index.html"><i class="fa-solid fa-house fa-2xl"></i></a>
+          <p class="cart hover:cursor-pointer">
+            <i class="fa-solid fa-cart-shopping fa-2xl"></i>
+            <span id="num-product">0</span>
+          </p>
+          <p id="theme-toggle" class="hover:cursor-pointer">
+            <i class="fa-regular fa-moon fa-2xl"></i>
+          </p>
+        </div>
+      </nav>
+    </header>
+    <section>
+      <div
+        id="products"
+        class="grid grid-cols-1 justify-items-center gap-2 w-full p-4"
+      ></div>
+    </section>
+    <footer>&copy; All right Saved</footer>
+    <script src="cart.js"></script>
+    <!-- <script src="main.js"></script> -->
+  </body>
+</html>
