@@ -108,7 +108,7 @@ img {
 
 @media (max-width: 496px) {
   input[type="search"] {
-    width: 150px;
+    width: 140px;
   }
   #products .item {
     flex-wrap: wrap;
