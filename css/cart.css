@@ -106,9 +106,13 @@ img {
   width: fit-content;
 }
 
-@media (max-width: 357px) {
+@media (max-width: 496px) {
   input[type="search"] {
     width: 150px;
+  }
+  #products .item {
+    flex-wrap: wrap;
+    justify-content: center;
   }
 }
 
